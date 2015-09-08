@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class CoinToss {
 	public static void main(String[] args) {
-
+		
 		Scanner input = new Scanner(System.in);
 		while (true) {
 			int num1 = (int)(Math.random() * 2);
