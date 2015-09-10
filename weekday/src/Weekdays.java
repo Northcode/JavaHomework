@@ -8,21 +8,34 @@ class Weekdays {
 	public static void main(String[] args) {
 		Scanner input = new Scanner(System.in);
 
-		System.out.print("Enter date in dd.mm.yyyy format: ");
-		String date = input.nextLine();
-
-		String[] dateParts = date.split("\\.");
-		
-		int day = Integer.parseInt(dateParts[0]);
-		int month = Integer.parseInt(dateParts[1]);
-		int year = Integer.parseInt(dateParts[2]);
-
-		int weekday = ZellerCongruence(day,month,year);
-		// DayOfWeek is 1 indexed, but Zeller is 0 indexed remeber to add 1
-		String weekdayStr = DayOfWeek.of(weekday + 1).getDisplayName(TextStyle.FULL, new Locale("no")); // Maybe get locale from os in future?
-
-		System.out.println("Day of the week: " + weekdayStr);
-		
+		while(true) {
+			int day,month,year = 0;
+			String date = "";
+			try {
+				
+				System.out.print("Enter date in dd.mm.yyyy format: ");
+				date = input.nextLine();
+				
+				String[] dateParts = date.split("\\.");
+				
+				 day = Integer.parseInt(dateParts[0]);
+				 month = Integer.parseInt(dateParts[1]);
+				 year = Integer.parseInt(dateParts[2]);
+			} catch (Exception ex) {
+				System.out.println("Failed to convert: " + date + " to date, please input in dd.mm.yyyy format (example: 24.12.2014)");
+				continue;
+			}
+			if (day < 0 || day > 31 || month < 0 || month > 12) {
+				System.out.println("Invalid date!");
+				continue;
+			}
+			int weekday = ZellerCongruence(day,month,year);
+			// DayOfWeek is 1 indexed, but Zeller is 0 indexed remeber to add 1
+			String weekdayStr = DayOfWeek.of(weekday + 1).getDisplayName(TextStyle.FULL, new Locale("no")); // Maybe get locale from os in future?
+			
+			System.out.println("Day of the week: " + weekdayStr);
+			break;
+		}
 		input.close();
 	}
 
