@@ -1,4 +1,4 @@
-oimport java.util.Scanner;
+import java.util.Scanner;
 import java.util.HashMap;
 import java.time.DayOfWeek;
 import java.time.format.TextStyle;
