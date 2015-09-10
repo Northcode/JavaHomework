@@ -1,4 +1,4 @@
-import java.util.Scanner;
+oimport java.util.Scanner;
 import java.util.HashMap;
 import java.time.DayOfWeek;
 import java.time.format.TextStyle;
@@ -27,6 +27,10 @@ class Weekdays {
 	}
 
 	public static int ZellerCongruence(int q, int m, int y) {
+		if (m < 3) {
+			m = 12 + m;
+			y = y - 1;
+		}
 		int j = y/100;
 		int k = y % 100;
 		int h = (q + (26*(m + 1))/10 + k + k/4 + j/4 + 5*j) % 7;
