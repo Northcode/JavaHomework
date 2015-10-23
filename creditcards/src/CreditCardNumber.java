@@ -21,46 +21,13 @@ public class CreditCardNumber {
 	} else {
 	    System.out.println("Card number is invalid!");
 	}
-
-	// System.out.print("Select card type:\n1.Visa\n2.Master Card\n3.American Express\n4.Discover Card\nSelect: ");
-
-	// int num = input.nextInt();
-
-	// final String card_error_message = "Card number does not match card type";
-
-	// if (num == 1) {
-	//     if (!prefixMatched(cardnumber,CARDPREFIX.VISA.value)) {
-	// 	System.out.println(card_error_message);
-	//     }
-	// } else if (num == 2) {
-	//     if (!prefixMatched(cardnumber,CARDPREFIX.MASTERCARD.value)) {
-	// 	System.out.println(card_error_message);
-	//     }
-	// } else if (num == 3) {
-	//     if (!prefixMatched(cardnumber,CARDPREFIX.AMERICANEXPRESS.value)) {
-	// 	System.out.println(card_error_message);
-	//     }
-	// } else if (num == 4) {
-	//     if (!prefixMatched(cardnumber,CARDPREFIX.DISCOVERCARD.value)) {
-	// 	System.out.println(card_error_message);
-	//     }
-	// }
-	/*
-	System.out.println("getDigit: " + getDigit(1) + ", " + getDigit(5) + ", " + getDigit(12) + ", " + getDigit(32));
-	System.out.println("getIndex: " + getIndex(3451,0) + "," + getIndex(3451,1) + "," + getIndex(3451,2) + "," + getIndex(3451,3));
-	System.out.println("getSize:" + getSize(5) + "," + getSize(421) + "," + getSize(123456789));
-	System.out.println("getPrefix: " + getPrefix(1234567,3));
-	System.out.println("isPrefix: " + prefixMatched(123456789,123) + "," + prefixMatched(3125,3) + "," + prefixMatched(5421,123));
-	System.out.println("SumOddPlace: " + sumOfOddPlace(123456789) + "," + sumOfOddPlace(11111111L));
-	System.out.println("SumEvenDouble: " + sumOfDoubleEvenPlace(123456789) + "," + sumOfDoubleEvenPlace(11111111L));
-	*/
     }
 
     /** Return true if the card number is valid */
     public static boolean isValid(long number) {
 	double evendoubles = sumOfDoubleEvenPlace(number);
 	double oddsum = sumOfOddPlace(number);
-	System.out.println(evendoubles + oddsum);
+	System.out.println(evendoubles + ", " + oddsum + ", " + ( evendoubles + oddsum ));
 	return (evendoubles + oddsum) % 10 == 0;
 	
     }
@@ -69,7 +36,7 @@ public class CreditCardNumber {
     public static int sumOfDoubleEvenPlace(long number) {
 	int sum = 0;
 	for(int i = 0; i < getSize(number); i += 2) {
-	    sum += getIndex(number,i)*2;
+	    sum += getDigit(getIndex(number,i)*2);
 	}
 	return sum;
     }
