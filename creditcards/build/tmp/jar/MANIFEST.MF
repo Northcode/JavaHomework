@@ -1,0 +1,4 @@
+Manifest-Version: 1.0
+Main-Class: no.northcode.java.homework.CreditCardNumber.CreditCardNumb
+ er
+

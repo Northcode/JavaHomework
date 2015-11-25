@@ -1,0 +1,7 @@
+allprojects {
+	    task hello << { task -> println "Hello from $task.project.name" }
+}
+
+subprojects {
+	    hello << { println " - I depend on homework" }
+}

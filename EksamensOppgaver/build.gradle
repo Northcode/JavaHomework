@@ -1,0 +1,5 @@
+apply plugin: "java"
+
+jar {
+    manifest.attributes "Main-Class": "no.northcode.java.homework.EksamensOppgaver.EksamensOppgaver"
+}
